@@ -8,10 +8,13 @@ GET /health
 
 POST /bfhl
 
-The API is built using Node.js and Express and includes robust input validation, error handling, and external AI integration using Google Gemini.
+The API is built using Node.js and Express and includes structured validation, centralized error handling, and external AI integration using Google Gemini.
 
 Live Deployment
 
+Live API URL: <PASTE YOUR RENDER URL HERE>
+
+GitHub Repository: <PASTE YOUR GITHUB REPO URL HERE>
 
 Tech Stack
 
@@ -51,7 +54,7 @@ Fibonacci
 Request
 
 {
-  "fibonacci": 7
+  "fibonacci": 10
 }
 
 
@@ -60,7 +63,7 @@ Response
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": [0, 1, 1, 2, 3, 5, 8]
+  "data": [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 }
 
 Prime Numbers
@@ -68,7 +71,7 @@ Prime Numbers
 Request
 
 {
-  "prime": [2, 4, 7, 9, 11]
+  "prime": [15, 17, 19, 21, 23, 24]
 }
 
 
@@ -77,7 +80,7 @@ Response
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": [2, 7, 11]
+  "data": [17, 19, 23]
 }
 
 LCM
@@ -85,7 +88,7 @@ LCM
 Request
 
 {
-  "lcm": [12, 18, 24]
+  "lcm": [8, 14, 20]
 }
 
 
@@ -94,7 +97,7 @@ Response
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": 72
+  "data": 280
 }
 
 HCF
@@ -102,7 +105,7 @@ HCF
 Request
 
 {
-  "hcf": [24, 36, 60]
+  "hcf": [45, 60, 75]
 }
 
 
@@ -111,7 +114,7 @@ Response
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": 12
+  "data": 15
 }
 
 AI Query
@@ -119,7 +122,7 @@ AI Query
 Request
 
 {
-  "AI": "?"
+  "AI": "What is the tallest mountain in the world?"
 }
 
 
@@ -128,18 +131,18 @@ Response
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": "Mumbai"
+  "data": "Everest"
 }
 
 Error Handling
 
-Only one valid key is allowed per request
+Only one valid key is allowed per request.
 
-Invalid input types return HTTP 400
+Invalid input types return HTTP 400.
 
-API never crashes on malformed requests
+The API does not crash on malformed requests.
 
-All error responses follow this format:
+All error responses follow this structure:
 
 {
   "is_success": false,
@@ -149,7 +152,7 @@ All error responses follow this format:
 
 Environment Variables
 
-The following environment variable must be set:
+The following environment variable must be configured:
 
 GEMINI_API_KEY=your_api_key_here
 
@@ -162,18 +165,3 @@ npm run dev
 
 
 The server will start on the configured port and expose the APIs locally.
-
-Notes
-
-The repository is public as required
-
-The API is publicly accessible
-
-Input validation and security guardrails are implemented
-
-AI integration uses Google Gemini free tier
-
-Author
-
-Shubh Jain
-Email: shubh3933.beai23@chitkara.edu.in
