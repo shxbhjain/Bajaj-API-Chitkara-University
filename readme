@@ -1,0 +1,179 @@
+BFHL REST API
+
+This project implements the BFHL Qualifier REST API as required for the Chitkara University 2026 evaluation.
+
+The application exposes two public endpoints:
+
+GET /health
+
+POST /bfhl
+
+The API is built using Node.js and Express and includes robust input validation, error handling, and external AI integration using Google Gemini.
+
+Live Deployment
+
+
+Tech Stack
+
+Node.js
+
+Express.js
+
+Google Gemini API
+
+Render (Deployment)
+
+API Endpoints
+1. GET /health
+
+Health check endpoint to verify service availability.
+
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in"
+}
+
+2. POST /bfhl
+
+Accepts exactly one key in the request body and performs the corresponding operation.
+
+Supported Keys
+Key	Input Type	Description
+fibonacci	Integer	Returns Fibonacci series
+prime	Integer Array	Returns only prime numbers
+lcm	Integer Array	Returns Least Common Multiple
+hcf	Integer Array	Returns Highest Common Factor
+AI	String	Returns single-word AI response
+Request & Response Examples
+Fibonacci
+
+Request
+
+{
+  "fibonacci": 7
+}
+
+
+Response
+
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": [0, 1, 1, 2, 3, 5, 8]
+}
+
+Prime Numbers
+
+Request
+
+{
+  "prime": [2, 4, 7, 9, 11]
+}
+
+
+Response
+
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": [2, 7, 11]
+}
+
+LCM
+
+Request
+
+{
+  "lcm": [12, 18, 24]
+}
+
+
+Response
+
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": 72
+}
+
+HCF
+
+Request
+
+{
+  "hcf": [24, 36, 60]
+}
+
+
+Response
+
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": 12
+}
+
+AI Query
+
+Request
+
+{
+  "AI": "?"
+}
+
+
+Response
+
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": "Mumbai"
+}
+
+Error Handling
+
+Only one valid key is allowed per request
+
+Invalid input types return HTTP 400
+
+API never crashes on malformed requests
+
+All error responses follow this format:
+
+{
+  "is_success": false,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "error": "Error message"
+}
+
+Environment Variables
+
+The following environment variable must be set:
+
+GEMINI_API_KEY=your_api_key_here
+
+
+The API key is not hardcoded and is securely injected at runtime.
+
+How to Run Locally
+npm install
+npm run dev
+
+
+The server will start on the configured port and expose the APIs locally.
+
+Notes
+
+The repository is public as required
+
+The API is publicly accessible
+
+Input validation and security guardrails are implemented
+
+AI integration uses Google Gemini free tier
+
+Author
+
+Shubh Jain
+Email: shubh3933.beai23@chitkara.edu.in
