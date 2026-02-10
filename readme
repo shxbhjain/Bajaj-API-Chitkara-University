@@ -1,162 +1,149 @@
-# BFHL REST API
+BFHL REST API
 
-This project implements the **BFHL Qualifier REST API** as required for
-the Chitkara University 2026 evaluation.
+Production-ready REST API built for the Chitkara University 2026 BFHL Qualifier Evaluation.
 
-The application exposes two public endpoints:
+The service exposes two public endpoints and supports mathematical operations along with AI-powered responses using Google Gemini.
 
--   GET /health\
--   POST /bfhl
+Overview
 
-The API is built using Node.js and Express and includes structured
-validation, centralized error handling, and external AI integration
-using Google Gemini.
+Structured request validation
 
-------------------------------------------------------------------------
+Centralized error handling
 
-## Tech Stack
+Consistent API response format
 
--   Node.js\
--   Express.js\
--   Google Gemini API\
--   Render (Deployment)
+Secure environment variable configuration
 
-------------------------------------------------------------------------
+Google Gemini AI integration
 
-## API Endpoints
+Deployment-ready (Render)
 
-### 1. GET /health
+Tech Stack
+
+Node.js
+
+Express.js
+
+Google Gemini API
+
+Render (Deployment)
+
+Base URL
+https://your-render-url.onrender.com
+
+
+(Replace with your actual deployed URL.)
+
+API Endpoints
+1. GET /health
 
 Health check endpoint to verify service availability.
 
-Response:
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in"
+}
 
-{ "is_success": true, "official_email":
-"shubh3933.beai23@chitkara.edu.in" }
+2. POST /bfhl
 
-------------------------------------------------------------------------
+Accepts exactly one key in the request body and performs the corresponding operation.
 
-### 2. POST /bfhl
-
-Accepts exactly one key in the request body and performs the
-corresponding operation.
-
-------------------------------------------------------------------------
-
-## Supported Keys
-
-  Key         Input Type      Description
-  ----------- --------------- ---------------------------------
-  fibonacci   Integer         Returns Fibonacci series
-  prime       Integer Array   Returns only prime numbers
-  lcm         Integer Array   Returns Least Common Multiple
-  hcf         Integer Array   Returns Highest Common Factor
-  AI          String          Returns single-word AI response
-
-------------------------------------------------------------------------
-
-## Request & Response Examples
-
-### Fibonacci
-
-Request:
-
+Supported Operations
+Key	Input Type	Description
+fibonacci	Integer	Returns Fibonacci series (N terms)
+prime	Integer Array	Returns only prime numbers
+lcm	Integer Array	Returns Least Common Multiple
+hcf	Integer Array	Returns Highest Common Factor
+AI	String	Returns single-word AI-generated response
+Request & Response Examples
+Fibonacci
+Request
 { "fibonacci": 10 }
 
-Response:
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": [0,1,1,2,3,5,8,13,21,34]
+}
 
-{ "is_success": true, "official_email":
-"shubh3933.beai23@chitkara.edu.in", "data": \[0, 1, 1, 2, 3, 5, 8, 13,
-21, 34\] }
+Prime Numbers
+Request
+{ "prime": [15,17,19,21,23,24] }
 
-------------------------------------------------------------------------
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": [17,19,23]
+}
 
-### Prime Numbers
+LCM
+Request
+{ "lcm": [8,14,20] }
 
-Request:
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": 280
+}
 
-{ "prime": \[15, 17, 19, 21, 23, 24\] }
+HCF
+Request
+{ "hcf": [45,60,75] }
 
-Response:
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": 15
+}
 
-{ "is_success": true, "official_email":
-"shubh3933.beai23@chitkara.edu.in", "data": \[17, 19, 23\] }
-
-------------------------------------------------------------------------
-
-### LCM
-
-Request:
-
-{ "lcm": \[8, 14, 20\] }
-
-Response:
-
-{ "is_success": true, "official_email":
-"shubh3933.beai23@chitkara.edu.in", "data": 280 }
-
-------------------------------------------------------------------------
-
-### HCF
-
-Request:
-
-{ "hcf": \[45, 60, 75\] }
-
-Response:
-
-{ "is_success": true, "official_email":
-"shubh3933.beai23@chitkara.edu.in", "data": 15 }
-
-------------------------------------------------------------------------
-
-### AI Query
-
-Request:
-
+AI Query
+Request
 { "AI": "What is the tallest mountain in the world?" }
 
-Response:
+Response
+{
+  "is_success": true,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "data": "Everest"
+}
 
-{ "is_success": true, "official_email":
-"shubh3933.beai23@chitkara.edu.in", "data": "Everest" }
+Error Handling
 
-------------------------------------------------------------------------
+Only one valid key is allowed per request
 
-## Error Handling
+Invalid input types return HTTP 400
 
--   Only one valid key is allowed per request.
--   Invalid input types return HTTP 400.
--   The API does not crash on malformed requests.
+Malformed requests are safely handled
 
-All error responses follow this structure:
+Error Response Format
+{
+  "is_success": false,
+  "official_email": "shubh3933.beai23@chitkara.edu.in",
+  "error": "Error message"
+}
 
-{ "is_success": false, "official_email":
-"shubh3933.beai23@chitkara.edu.in", "error": "Error message" }
+Environment Variables
 
-------------------------------------------------------------------------
-
-## Environment Variables
-
-The following environment variable must be configured:
+Create a .env file:
 
 GEMINI_API_KEY=your_api_key_here
 
-The API key is not hardcoded and is securely injected at runtime.
 
-------------------------------------------------------------------------
+The API key is securely injected at runtime and never hardcoded.
 
-## How to Run Locally
-
-npm install\
+Run Locally
+npm install
 npm run dev
 
-The server will start on the configured port and expose the APIs
-locally.
 
-------------------------------------------------------------------------
+Server starts on the configured port.
 
-## Author
+Author
 
-Shubh Jain\
-Email: shubh3933.beai23@chitkara.edu.in
+Shubh Jain
+shubh3933.beai23@chitkara.edu.in
