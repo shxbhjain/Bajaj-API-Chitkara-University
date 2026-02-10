@@ -1,149 +1,223 @@
-BFHL REST API
+# BFHL REST API
 
-Production-ready REST API built for the Chitkara University 2026 BFHL Qualifier Evaluation.
+Production-ready REST API built for the Chitkara University 2026 BFHL Qualifier evaluation.
 
 The service exposes two public endpoints and supports mathematical operations along with AI-powered responses using Google Gemini.
 
-Overview
+---
 
-Structured request validation
+## Overview
 
-Centralized error handling
+* Structured request validation
+* Centralized error handling
+* Consistent API response format
+* Secure environment variable configuration
+* Google Gemini AI integration
+* Deployment-ready (Render)
 
-Consistent API response format
+---
 
-Secure environment variable configuration
+## Tech Stack
 
-Google Gemini AI integration
+* Node.js
+* Express.js
+* Google Gemini API
+* Render (Deployment)
 
-Deployment-ready (Render)
+---
 
-Tech Stack
+## Base URL
 
-Node.js
+```
+https://bajaj-api-chitkara-university.onrender.com
+```
 
-Express.js
+---
 
-Google Gemini API
+## API Endpoints
 
-Render (Deployment)
-
-Base URL
-https://your-render-url.onrender.com
-
-
-(Replace with your actual deployed URL.)
-
-API Endpoints
-1. GET /health
+### 1. GET /health
 
 Health check endpoint to verify service availability.
 
-Response
+Response:
+
+```json
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in"
 }
+```
 
-2. POST /bfhl
+---
+
+### 2. POST /bfhl
 
 Accepts exactly one key in the request body and performs the corresponding operation.
 
-Supported Operations
-Key	Input Type	Description
-fibonacci	Integer	Returns Fibonacci series (N terms)
-prime	Integer Array	Returns only prime numbers
-lcm	Integer Array	Returns Least Common Multiple
-hcf	Integer Array	Returns Highest Common Factor
-AI	String	Returns single-word AI-generated response
-Request & Response Examples
-Fibonacci
-Request
-{ "fibonacci": 10 }
+---
 
-Response
+## Supported Operations
+
+| Key       | Input Type    | Description                               |
+| --------- | ------------- | ----------------------------------------- |
+| fibonacci | Integer       | Returns Fibonacci series (N terms)        |
+| prime     | Integer array | Returns only prime numbers                |
+| lcm       | Integer array | Returns Least Common Multiple             |
+| hcf       | Integer array | Returns Highest Common Factor             |
+| AI        | String        | Returns single-word AI-generated response |
+
+---
+
+## Request and Response Examples
+
+### Fibonacci
+
+Request:
+
+```json
+{ "fibonacci": 10 }
+```
+
+Response:
+
+```json
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
   "data": [0,1,1,2,3,5,8,13,21,34]
 }
+```
 
-Prime Numbers
-Request
+---
+
+### Prime Numbers
+
+Request:
+
+```json
 { "prime": [15,17,19,21,23,24] }
+```
 
-Response
+Response:
+
+```json
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
   "data": [17,19,23]
 }
+```
 
-LCM
-Request
+---
+
+### LCM
+
+Request:
+
+```json
 { "lcm": [8,14,20] }
+```
 
-Response
+Response:
+
+```json
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
   "data": 280
 }
+```
 
-HCF
-Request
+---
+
+### HCF
+
+Request:
+
+```json
 { "hcf": [45,60,75] }
+```
 
-Response
+Response:
+
+```json
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
   "data": 15
 }
+```
 
-AI Query
-Request
+---
+
+### AI Query
+
+Request:
+
+```json
 { "AI": "What is the tallest mountain in the world?" }
+```
 
-Response
+Response:
+
+```json
 {
   "is_success": true,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
   "data": "Everest"
 }
+```
 
-Error Handling
+If the AI service is unavailable, the API safely returns `"UNKNOWN"` instead of failing.
 
-Only one valid key is allowed per request
+---
 
-Invalid input types return HTTP 400
+## Error Handling
 
-Malformed requests are safely handled
+* Only one valid key is allowed per request
+* Invalid input types return appropriate HTTP error codes
+* Malformed requests are handled safely without crashing the server
 
-Error Response Format
+Error response format:
+
+```json
 {
   "is_success": false,
   "official_email": "shubh3933.beai23@chitkara.edu.in",
   "error": "Error message"
 }
+```
 
-Environment Variables
+---
 
-Create a .env file:
+## Environment Variables
 
+Create a `.env` file with the following:
+
+```env
 GEMINI_API_KEY=your_api_key_here
+```
 
+The API key is securely injected at runtime and is never hardcoded or committed.
 
-The API key is securely injected at runtime and never hardcoded.
+---
 
-Run Locally
+## Run Locally
+
+```bash
 npm install
 npm run dev
+```
 
+The server starts on the configured port.
 
-Server starts on the configured port.
+---
 
-Author
+## Author
 
 Shubh Jain
-shubh3933.beai23@chitkara.edu.in
+[shubh3933.beai23@chitkara.edu.in](mailto:shubh3933.beai23@chitkara.edu.in)
+
+---
+
