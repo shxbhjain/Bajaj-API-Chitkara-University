@@ -1,167 +1,162 @@
-BFHL REST API
+# BFHL REST API
 
-This project implements the BFHL Qualifier REST API as required for the Chitkara University 2026 evaluation.
+This project implements the **BFHL Qualifier REST API** as required for
+the Chitkara University 2026 evaluation.
 
 The application exposes two public endpoints:
 
-GET /health
+-   GET /health\
+-   POST /bfhl
 
-POST /bfhl
+The API is built using Node.js and Express and includes structured
+validation, centralized error handling, and external AI integration
+using Google Gemini.
 
-The API is built using Node.js and Express and includes structured validation, centralized error handling, and external AI integration using Google Gemini.
+------------------------------------------------------------------------
 
-Live Deployment
+## Tech Stack
 
-Live API URL: <PASTE YOUR RENDER URL HERE>
+-   Node.js\
+-   Express.js\
+-   Google Gemini API\
+-   Render (Deployment)
 
-GitHub Repository: <PASTE YOUR GITHUB REPO URL HERE>
+------------------------------------------------------------------------
 
-Tech Stack
+## API Endpoints
 
-Node.js
-
-Express.js
-
-Google Gemini API
-
-Render (Deployment)
-
-API Endpoints
-1. GET /health
+### 1. GET /health
 
 Health check endpoint to verify service availability.
 
-Response
-{
-  "is_success": true,
-  "official_email": "shubh3933.beai23@chitkara.edu.in"
-}
+Response:
 
-2. POST /bfhl
+{ "is_success": true, "official_email":
+"shubh3933.beai23@chitkara.edu.in" }
 
-Accepts exactly one key in the request body and performs the corresponding operation.
+------------------------------------------------------------------------
 
-Supported Keys
-Key	Input Type	Description
-fibonacci	Integer	Returns Fibonacci series
-prime	Integer Array	Returns only prime numbers
-lcm	Integer Array	Returns Least Common Multiple
-hcf	Integer Array	Returns Highest Common Factor
-AI	String	Returns single-word AI response
-Request & Response Examples
-Fibonacci
+### 2. POST /bfhl
 
-Request
+Accepts exactly one key in the request body and performs the
+corresponding operation.
 
-{
-  "fibonacci": 10
-}
+------------------------------------------------------------------------
 
+## Supported Keys
 
-Response
+  Key         Input Type      Description
+  ----------- --------------- ---------------------------------
+  fibonacci   Integer         Returns Fibonacci series
+  prime       Integer Array   Returns only prime numbers
+  lcm         Integer Array   Returns Least Common Multiple
+  hcf         Integer Array   Returns Highest Common Factor
+  AI          String          Returns single-word AI response
 
-{
-  "is_success": true,
-  "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-}
+------------------------------------------------------------------------
 
-Prime Numbers
+## Request & Response Examples
 
-Request
+### Fibonacci
 
-{
-  "prime": [15, 17, 19, 21, 23, 24]
-}
+Request:
 
+{ "fibonacci": 10 }
 
-Response
+Response:
 
-{
-  "is_success": true,
-  "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": [17, 19, 23]
-}
+{ "is_success": true, "official_email":
+"shubh3933.beai23@chitkara.edu.in", "data": \[0, 1, 1, 2, 3, 5, 8, 13,
+21, 34\] }
 
-LCM
+------------------------------------------------------------------------
 
-Request
+### Prime Numbers
 
-{
-  "lcm": [8, 14, 20]
-}
+Request:
 
+{ "prime": \[15, 17, 19, 21, 23, 24\] }
 
-Response
+Response:
 
-{
-  "is_success": true,
-  "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": 280
-}
+{ "is_success": true, "official_email":
+"shubh3933.beai23@chitkara.edu.in", "data": \[17, 19, 23\] }
 
-HCF
+------------------------------------------------------------------------
 
-Request
+### LCM
 
-{
-  "hcf": [45, 60, 75]
-}
+Request:
 
+{ "lcm": \[8, 14, 20\] }
 
-Response
+Response:
 
-{
-  "is_success": true,
-  "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": 15
-}
+{ "is_success": true, "official_email":
+"shubh3933.beai23@chitkara.edu.in", "data": 280 }
 
-AI Query
+------------------------------------------------------------------------
 
-Request
+### HCF
 
-{
-  "AI": "What is the tallest mountain in the world?"
-}
+Request:
 
+{ "hcf": \[45, 60, 75\] }
 
-Response
+Response:
 
-{
-  "is_success": true,
-  "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "data": "Everest"
-}
+{ "is_success": true, "official_email":
+"shubh3933.beai23@chitkara.edu.in", "data": 15 }
 
-Error Handling
+------------------------------------------------------------------------
 
-Only one valid key is allowed per request.
+### AI Query
 
-Invalid input types return HTTP 400.
+Request:
 
-The API does not crash on malformed requests.
+{ "AI": "What is the tallest mountain in the world?" }
+
+Response:
+
+{ "is_success": true, "official_email":
+"shubh3933.beai23@chitkara.edu.in", "data": "Everest" }
+
+------------------------------------------------------------------------
+
+## Error Handling
+
+-   Only one valid key is allowed per request.
+-   Invalid input types return HTTP 400.
+-   The API does not crash on malformed requests.
 
 All error responses follow this structure:
 
-{
-  "is_success": false,
-  "official_email": "shubh3933.beai23@chitkara.edu.in",
-  "error": "Error message"
-}
+{ "is_success": false, "official_email":
+"shubh3933.beai23@chitkara.edu.in", "error": "Error message" }
 
-Environment Variables
+------------------------------------------------------------------------
+
+## Environment Variables
 
 The following environment variable must be configured:
 
 GEMINI_API_KEY=your_api_key_here
 
-
 The API key is not hardcoded and is securely injected at runtime.
 
-How to Run Locally
-npm install
+------------------------------------------------------------------------
+
+## How to Run Locally
+
+npm install\
 npm run dev
 
+The server will start on the configured port and expose the APIs
+locally.
 
-The server will start on the configured port and expose the APIs locally.
+------------------------------------------------------------------------
+
+## Author
+
+Shubh Jain\
+Email: shubh3933.beai23@chitkara.edu.in
